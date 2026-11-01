@@ -1,0 +1,15 @@
+data/
+__pycache__/
+*.pyc
+*.pyo
+.git/
+runs/
+notebooks/
+tests/
+*.bat
+outputs/plots/
+outputs/logs/
+deploy_hf.py
+*.egg-info/
+.env
+*.pth

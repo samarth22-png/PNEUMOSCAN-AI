@@ -1,0 +1,39 @@
+data:
+  root: "data/raw/chest_xray"  # Pre-split: train/val/test with NORMAL/ and PNEUMONIA/ subfolders
+  img_size: 224
+  batch_size: 32
+  num_workers: 0  # Windows multiprocessing doesn't support cv2.CLAHE pickling
+  num_classes: 2
+  class_names: ["NORMAL", "PNEUMONIA"]
+  train_split: 0.70
+  val_split: 0.15
+  test_split: 0.15
+
+model:
+  name: "efficientnet_b4"  # cnn | resnet50 | efficientnet_b4
+  pretrained: true
+  dropout: 0.4
+  freeze_backbone: false   # Stage 2: unfreeze backbone for fine-tuning
+
+training:
+  epochs: 20               # Stage 2: fewer epochs needed
+  lr: 0.0001               # 10x smaller LR for fine-tuning
+  weight_decay: 0.0001
+  scheduler: "cosine"
+  amp: true
+  early_stopping_patience: 10   # more patience for fine-tuning
+  grad_accumulation_steps: 1
+  label_smoothing: 0.1
+  gradient_clip: 1.0
+
+loss:
+  type: "focal"             # cross_entropy | focal | weighted_ce
+  focal_gamma: 2.0
+  focal_alpha: 0.25
+
+outputs:
+  model_dir: "outputs/models"
+  plot_dir: "outputs/plots"
+  report_dir: "outputs/reports"
+
+seed: 42
