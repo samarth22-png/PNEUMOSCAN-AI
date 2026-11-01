@@ -10,7 +10,7 @@
 
 A production-grade deep learning system for automated pneumonia detection from chest X-rays. Built on a fine-tuned **EfficientNet-B4** backbone with **Grad-CAM explainability**, wrapped in a custom dark-mode UI and deployed on Hugging Face Spaces.
 
-*🚀 **Live Demo**: [huggingface.co/spaces/aniket252005/pneumoscan-ai](https://huggingface.co/spaces/aniket252005/pneumoscan-ai)*
+
 
 ---
 
